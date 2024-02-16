@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "ingestion"
+version = "0.1.0"
+description = "ingestion of data from various sources"
+authors = []
+packages = [
+    { include = "*", from = "src"}
+]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.4.4"
+pytest-cov = "4.1.0"
+black = "23.9.1"
+docformatter = "1.7.5"
+ruff = "0.0.289"
+
+[tool.poetry.group.test.dependencies]
+pytest = "7.4.4"
+pytest-cov = "4.1.0"
+bandit = "1.7.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+backend-path = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+testpaths = "tests"
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "venv",
+]
+ignore = []
+line-length = 90
+select = [
+    "E",
+    "F",
+    "W",
+    "I001",
+]
+src = ["src", "tests"]
